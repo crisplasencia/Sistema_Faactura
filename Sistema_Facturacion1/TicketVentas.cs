@@ -15,14 +15,14 @@ namespace Sistema_Facturacion1
         StringBuilder linea = new StringBuilder();
         int maxD = 40, cortar;//Esto es asignando un limite a los caracteres de los numeros y la variable cortar cortara el texto cuando pase ese limite
 
-        public string PrimeraLinea()
+        public string Lineasguion()
         {
-            string PrimeraLineas = "";
+            string Lineasguion = "";
             for (int i = 0; i < maxD; i++)
             {
-                PrimeraLineas += "-"; // Lo que hice es que hace que agregue un guion hasta el limite de caracteres
+                Lineasguion += "-"; // Lo que hice es que hace que agregue un guion hasta el limite de caracteres
             }
-            return linea.AppendLine(PrimeraLineas).ToString();
+            return linea.AppendLine(Lineasguion).ToString();
         }
         public string LineasAsteriscos()
         {
@@ -44,7 +44,7 @@ namespace Sistema_Facturacion1
         }
         public void TituloDelTicket()
         {
-            linea.AppendLine("ARTICULO            |CANT|PRECIO|VALOR");
+            linea.AppendLine("ASIGNATURA            |CODE|PRECIO|VALOR");
         }
         // este metodo es para poner el texto a la izquierda
         public void Textoizquierda(string texto)
@@ -314,13 +314,7 @@ namespace Sistema_Facturacion1
                 }
 
             }
-            else
-            {
-                linea.AppendLine("Los valores ingresados para esta fila.");
-                linea.AppendLine("Superan las columnas que este soporta.");
-                throw new Exception("Los valores ingresados para algunas filas de este ticket, han sido superadas.");
 
-            }
         }
         //metodo de impresion 
         public void Cortaticket()

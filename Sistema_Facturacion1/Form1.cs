@@ -37,8 +37,8 @@ namespace Sistema_Facturacion1
          
             TicketVenta ticket = new TicketVenta();
 
-            ticket.CentrarTexto("EL Poo POLA ");
-            ticket.Textoizquierda("LA PARA DE LOS SUPER ");
+            ticket.CentrarTexto("SISTEMA ACADEMICO");
+            ticket.Textoizquierda("LA PARA DE LAS UNIS ");
             ticket.Textoizquierda("EN EL FIN DEL MUNDO ");
             ticket.Textoizquierda("809 887 9762");
             ticket.Textoizquierda("ASOC");
@@ -54,7 +54,7 @@ namespace Sistema_Facturacion1
             ticket.LineasAsteriscos();
 
             ticket.TituloDelTicket();
-            ticket.PrimeraLinea();
+            ticket.Lineasguion();
             //Para añadir nombres, cantidades, precios
             foreach (DataGridViewRow fila in dataLista.Rows)
             {
@@ -63,8 +63,8 @@ namespace Sistema_Facturacion1
            
             ticket.LineasIgual();
 
-            ticket.PrimeraLinea();
-            ticket.VentaTotal("SUBTOTAL. . . . . . .$", int.Parse("0"));
+            ticket.Lineasguion();
+            ticket.VentaTotal("SUBTOTAL. . . . . . .$", int.Parse(CostoPagar.Text));
             ticket.VentaTotal("IVA . . . . . . . . .$", int.Parse("0"));
             ticket.VentaTotal("TOTAL . . . . . . . .$", int.Parse(CostoPagar.Text));
             ticket.Textoizquierda("");
@@ -86,13 +86,13 @@ namespace Sistema_Facturacion1
             {
                 dataLista.Rows.Remove(dataLista.CurrentRow);
             }
-            txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCantidad.Text = "";
+            txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCodigo.Text = "";
             CostoPagar.Text = Devolucion.Text = "0.00";
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-
+            DateTime.Now.ToShortDateString();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -106,18 +106,18 @@ namespace Sistema_Facturacion1
         {
             try
             {
-                if (txtIdArticulo.Text != ""&& txtNombre.Text != "" && txtPrecio.Text != "" && txtCantidad.Text != "." )
+                if (txtIdArticulo.Text != ""&& txtNombre.Text != "" && txtPrecio.Text != "" && txtCodigo.Text != "." )
                 {
                     listaVenta[Fila, 0] = txtIdArticulo.Text;
                     listaVenta[Fila, 1] = txtNombre.Text;
                     listaVenta[Fila, 2] = txtPrecio.Text;
-                    listaVenta[Fila, 3] = txtCantidad.Text;
-                    listaVenta[Fila, 4] = (float.Parse(txtPrecio.Text) * float.Parse(txtCantidad.Text)).ToString();
+                    listaVenta[Fila, 3] = txtCodigo.Text;
+                    listaVenta[Fila, 4] = (float.Parse(txtPrecio.Text) * float.Parse(txtCodigo.Text)).ToString();
 
                     dataLista.Rows.Add(listaVenta[Fila, 0], listaVenta[Fila, 1], listaVenta[Fila, 2], listaVenta[Fila, 3], listaVenta[Fila, 4]);
 
                     Fila++;
-                    txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCantidad.Text = "";
+                    txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCodigo.Text = "";
 
                     txtIdArticulo.Focus();
                 }
@@ -132,6 +132,7 @@ namespace Sistema_Facturacion1
         }
         public void CostosPagar()
         {
+            //Aqui se saca el costo Total de las asignaturas
             float CostoTotal = 0;
             int conteo = 0;
 
@@ -146,16 +147,37 @@ namespace Sistema_Facturacion1
 
         private void txtEfectivo_TextChanged(object sender, EventArgs e)
         {
+
             try
             {
                 Devolucion.Text = (float.Parse(txtEfectivo.Text) - float.Parse(CostoPagar.Text)).ToString();
-
             }
-            catch 
+            catch
             {
                 Devolucion.Text = "0.00";
-               
+
             }
+        }    
+        
+
+        private void CostoPagar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

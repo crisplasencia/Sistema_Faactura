@@ -38,15 +38,10 @@
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.BtCargarlista = new System.Windows.Forms.Button();
             this.dataLista = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btVender = new System.Windows.Forms.Button();
             this.txtEfectivo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,6 +55,11 @@
             this.Devolucion = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.lbl.SuspendLayout();
@@ -82,12 +82,12 @@
             // 
             this.Ventas1.AutoSize = true;
             this.Ventas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.Ventas1.Location = new System.Drawing.Point(34, 29);
+            this.Ventas1.Location = new System.Drawing.Point(34, 19);
             this.Ventas1.MaximumSize = new System.Drawing.Size(0, 30);
             this.Ventas1.Name = "Ventas1";
-            this.Ventas1.Size = new System.Drawing.Size(99, 30);
+            this.Ventas1.Size = new System.Drawing.Size(70, 30);
             this.Ventas1.TabIndex = 1;
-            this.Ventas1.Text = "Ventas";
+            this.Ventas1.Text = "Caja";
             this.Ventas1.Click += new System.EventHandler(this.label1_Click);
             // 
             // flowLayoutPanel1
@@ -100,20 +100,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 96);
+            this.label1.Location = new System.Drawing.Point(28, 96);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "IdArticulo:";
+            this.label1.Text = "IdAsignatura:";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(37, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre:";
+            this.label2.Text = "Asignatura:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
@@ -121,9 +122,10 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(37, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Cantidad:";
+            this.label3.Text = "Codigo:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -157,10 +159,11 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(97, 177);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidad.TabIndex = 8;
+            this.txtCodigo.Location = new System.Drawing.Point(97, 177);
+            this.txtCodigo.Name = "txtCantidad";
+            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.TabIndex = 8;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // button1
             // 
@@ -197,31 +200,6 @@
             this.dataLista.Size = new System.Drawing.Size(503, 150);
             this.dataLista.TabIndex = 11;
             this.dataLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "IdArticulo";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Precio";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Cantidad";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "SubTotal";
-            this.Column5.Name = "Column5";
             // 
             // btVender
             // 
@@ -303,6 +281,7 @@
             this.CostoPagar.Size = new System.Drawing.Size(44, 20);
             this.CostoPagar.TabIndex = 19;
             this.CostoPagar.Text = "0.00";
+            this.CostoPagar.Click += new System.EventHandler(this.CostoPagar_Click);
             // 
             // lbl
             // 
@@ -356,6 +335,31 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "Devolución:";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "IdAsignatura";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Precio";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Codigo";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "SubTotal";
+            this.Column5.Name = "Column5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,7 +377,7 @@
             this.Controls.Add(this.dataLista);
             this.Controls.Add(this.BtCargarlista);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtIdArticulo);
@@ -408,7 +412,7 @@
         private System.Windows.Forms.TextBox txtIdArticulo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtCargarlista;
         private System.Windows.Forms.DataGridView dataLista;
