@@ -44,7 +44,7 @@ namespace Sistema_Facturacion1
         }
         public void TituloDelTicket()
         {
-            linea.AppendLine("ASIGNATURA            |CODE|PRECIO|VALOR");
+            linea.AppendLine("ASIGNATURA           |CREDITO|PRECIO|VALOR");
         }
         // este metodo es para poner el texto a la izquierda
         public void Textoizquierda(string texto)

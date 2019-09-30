@@ -12,9 +12,12 @@ namespace Sistema_Facturacion1
 {
     public partial class Form1 : Form
     {
+        public const int Precio = 2300; 
         public Form1()
         {
             InitializeComponent();
+            Iblfecha.Text = DateTime.Now.ToShortDateString();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -86,13 +89,13 @@ namespace Sistema_Facturacion1
             {
                 dataLista.Rows.Remove(dataLista.CurrentRow);
             }
-            txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCodigo.Text = "";
+            txtIdArticulo.Text = txtNombre.Text = txtCodigo.Text = "";
             CostoPagar.Text = Devolucion.Text = "0.00";
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-            DateTime.Now.ToShortDateString();
+            Iblfecha.Text = DateTime.Now.ToShortDateString();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -106,18 +109,18 @@ namespace Sistema_Facturacion1
         {
             try
             {
-                if (txtIdArticulo.Text != ""&& txtNombre.Text != "" && txtPrecio.Text != "" && txtCodigo.Text != "." )
+                if (txtIdArticulo.Text != ""&& txtNombre.Text != "" && Precio.ToString() != "" && txtCodigo.Text != "." )
                 {
                     listaVenta[Fila, 0] = txtIdArticulo.Text;
                     listaVenta[Fila, 1] = txtNombre.Text;
-                    listaVenta[Fila, 2] = txtPrecio.Text;
+                    listaVenta[Fila, 2] = Precio.ToString();
                     listaVenta[Fila, 3] = txtCodigo.Text;
-                    listaVenta[Fila, 4] = (float.Parse(txtPrecio.Text) * float.Parse(txtCodigo.Text)).ToString();
+                    listaVenta[Fila, 4] = (int.Parse(Precio.ToString()) * float.Parse(txtCodigo.Text)).ToString();
 
                     dataLista.Rows.Add(listaVenta[Fila, 0], listaVenta[Fila, 1], listaVenta[Fila, 2], listaVenta[Fila, 3], listaVenta[Fila, 4]);
 
                     Fila++;
-                    txtIdArticulo.Text = txtNombre.Text = txtPrecio.Text = txtCodigo.Text = "";
+                    txtIdArticulo.Text = txtNombre.Text = txtCodigo.Text = "";
 
                     txtIdArticulo.Focus();
                 }
@@ -176,6 +179,16 @@ namespace Sistema_Facturacion1
         }
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
